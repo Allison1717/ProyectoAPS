@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LatamsolApplication<latamsol>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.latamsol.latamsol.LatamsolApplication",
+            "projectName": "latamsol",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

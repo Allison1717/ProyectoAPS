@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+   
+  }
+
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+footer{
+  margin-left: 380px;
+  position: absolute;
+  width: 80%;
+  
+}
+
+  .card{
+    height: auto;
+    width: 40rem;
+    text-align: center;
+  }
+  .botonSalir{
+    width: 350px;
+    height: 80px;
+  }
+  .btn-fondo{
+    background-image: radial-gradient(circle at -20.44% 56.16%, #e1ff51 0, #c5ff4c 16.67%, #a3ff45 33.33%, #79f23c 50%, #42e536 66.67%, #00da38 83.33%, #00d23f 100%);
+  }
+  .fondo-login{
+    background: linear-gradient(110.1deg, rgb(34, 126, 34) 2.9%, rgb(168, 251, 60) 90.3%);
+  }
+  /*TEXTO  PARA EL LOGIN*/
+.text-diseño{
+  font-family: 'Kanit', sans-serif;
+  font-size: 48px;
+  color: black ;
+  text-shadow: 10px 10px 10px 10px #a3ff45 ;
+ 
+}
+.text-diseño2{
+  font-family: 'Kanit', sans-serif;
+  font-size: 30px;
+  color: black ;
+  text-shadow: 10px 10px 10px 10px #a3ff45 ;
+ 
+}
+.tablaempleados{
+ margin-left: 500px;
+  align-items: center;
+  align-content: center;
+}
+.moverlogo{
+  margin-left: 40px;
+}
+  .sidebar{
+    width: 380px;
+    background-color: #72cb10 !important;
+    height: 100vh;
+    position: fixed;
+    transition: all 0.3s;
+    overflow: hidden;
+  }
+  .nav-link.active{
+     background-color: white !important;
+     color: black !important;
+  }
+  .sidebar.closed {
+    width: 70px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 50px 0;
+  }
+  
+  .sidebar ul li {
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .sidebar ul li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  

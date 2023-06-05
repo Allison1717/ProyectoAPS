@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head th:replace="layout/fragmentos :: cabecera"></head>   
+<body>
+  <main class="d-flex">
+   
+    <div th:replace="layout/fragmentos :: barra"></div>
+    <div class="tablaempleados py-5">
+       <!--TABLA DONDE SE VERÁN LOS EMPLEADOS-->
+       <div class="card mt-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 1200px;" >
+        <div class="card-header texto-diseño fs-3">GESTION DE VENTAS</div>
+        <div class="card-body">
+            <div class="table-responsive col-12 text-center">
+                <div class="col-12 text-center mb-2">
+                    <a th:href="@{/formularioEmpleado}" id="btnRegEmpleado" class="btn btn-primary me-5 estilo-letra-mascota" type="submit"><img class="pe-1"
+                            src="../assets/ventas.png" alt="empleado" height="40" width="40">Registrar Venta</a>
+                    <a th:href="@{/exportarPDF}" id="pdfEmpleado" class="btn btn-danger"><img class="pe-1"
+                        src="../assets/pdf.png" alt="pdf" height="40" width="40">PDF</a>
+                </div> 
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Empleado</th>
+                            <th>ID Producto</th>
+                            <th>Producto</th>
+                            <th>ID Servicio</th>
+                            <th>Servicio</th>
+                            <th>N° factura</th>
+                            <th>Comprobante de pago</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td colspan="2">Larry the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                  
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+        
+    </div>
+</main>
+ 
+  </main>
+  <footer th:replace="layout/fragmentos :: pie"></footer>
+
+</body>
+</html>
