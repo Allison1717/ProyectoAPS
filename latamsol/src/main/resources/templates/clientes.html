@@ -12,47 +12,99 @@
         <div class="card-header texto-diseño fs-3">GESTION DE CLIENTES</div>
         <div class="card-body">
             <div class="table-responsive col-12 text-center">
-                <div class="col-12 text-center mb-2">
-                    <a th:href="@{/formularioEmpleado}" id="btnRegEmpleado" class="btn btn-primary me-5 estilo-letra-mascota" type="submit"><img class="pe-1"
-                            src="../assets/empleado.png" alt="empleado" height="40" width="40">Registrar Cliente</a>
-                    <a th:href="@{/GestionRol}" id="btnRegRol" class="btn btn-success me-5 estilo-letra-mascota" type="submit"><img class="pe-1"
-                        src="../assets/rol.png" alt="rol" height="40" width="40">Gestion Cliente</a>
-                    <a th:href="@{/exportarPDF}" id="pdfEmpleado" class="btn btn-danger"><img class="pe-1"
-                        src="../assets/pdf.png" alt="pdf" height="40" width="40">PDF</a>
-                </div> 
+              <form th:action="@{/clientes}" th:object="${cliente}" method="post">
+                <div class="row"> 
+                  <div class="row">
+                    <div class="col-md-6">
+                      <input th:field="*{id}" type="hidden" />
+                        <div class="form-group">
+                            <label for="medio">Medio:</label>
+                            <input th:field="*{medio}" placeholder="Ingrese medio de llegada" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input th:field="*{nombre}" placeholder="Ingrese nombre del cliente" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido:</label>
+                            <input th:field="*{apellido}" placeholder="Ingrese apellido del cliente" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo:</label>
+                            <input th:field="*{correo}" placeholder="Ingrese correo del cliente" class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono:</label>
+                            <input th:field="*{telefono}" placeholder="Ingrese teléfono del cliente" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="direccion">Dirección:</label>
+                            <input th:field="*{direccion}" placeholder="Ingrese dirección del cliente" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="ruc">RUC:</label>
+                            <input th:field="*{ruc}" placeholder="Ingrese RUC del cliente" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="dni">DNI:</label>
+                            <input th:field="*{dni}" placeholder="Ingrese DNI del cliente" class="form-control" type="text"/>
+                        </div>
+                    </div>
+                </div>
+                                                           
+                </div>
+                <br><br>    
+                <div class="row">
+                  <div class="col-12 text-center mb-2 d-inline-block btn-container"> 
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-floppy-disk"></i><img class="pe-1" th:src="@{/assets/images/empleado.png}" alt="empleado" height="40" width="40"> 
+                        Registrar Cliente
+                    </button>
+                    <a th:href="@{/exportarPDF}" id="pdfEmpleado" class="btn btn-danger ml-3" style="margin-left: 20px;">
+                        <img class="pe-1" th:src="@{/assets/images/pdf.png}" alt="pdf" height="40" width="40"> PDF
+                    </a>
+                </div>                
+                </div>
+            </form>
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Medio de llegada</th>
-                            <th>DNI</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
-                            <th>Empresa</th>
-                            <th>RUC</th>
                             <th>Correo</th>
                             <th>Telefono</th>
                             <th>Direccion</th>
+                            <th>RUC</th>
+                            <th>DNI</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td colspan="2">Larry the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
+                      <tr th:each="item: ${listaClientes}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.medio}"></td>
+                        <td th:text="${item.nombre}"></td>
+                        <td th:text="${item.apellido}"></td>
+                        <td th:text="${item.correo}"></td>
+                        <td th:text="${item.telefono}"></td>
+                        <td th:text="${item.direccion}"></td>
+                        <td th:text="${item.ruc}"></td>
+                        <td th:text="${item.dni}"></td>
+                        <td class="text-center"> 
+                            <a th:href="@{/cliente/editar/}+${item.id}" class="btn btn-warning">
+                                <i class="fa-solid fa-pen-to-square"></i> Editar
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a th:href="@{/cliente/eliminar/}+${item.id}" class="btn btn-danger" onclick="return confirm('¿Desea eliminar el cliente?')">    
+                                <i class="fa-solid fa-trash"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>        
                       </tbody>
                   
                 </table>

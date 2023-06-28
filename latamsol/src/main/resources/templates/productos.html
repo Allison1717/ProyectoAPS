@@ -1,69 +1,100 @@
-
 <!DOCTYPE html>
 <html lang="es">
-  <head th:replace="layout/fragmentos :: cabecera"></head>   
+<head th:replace="layout/fragmentos :: cabecera"></head>
 <body>
-  <main class="d-flex">
-   
-    <div th:replace="layout/fragmentos :: barra"></div>
-    <div class="tablaempleados py-5">
-       <!--TABLA DONDE SE VERÁN LOS EMPLEADOS-->
-       <div class="card mt-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 1200px;" >
-        <div class="card-header texto-diseño fs-3">GESTION DE PRODUCTOS</div>
-        <div class="card-body">
-            <div class="table-responsive col-12 text-center">
-                <div class="col-12 text-center mb-2">
-                    <a th:href="@{/formularioEmpleado}" id="btnRegEmpleado" class="btn btn-primary me-5 estilo-letra-mascota" type="submit"><img class="pe-1"
-                            src="../assets/newProducto.png" alt="empleado" height="40" width="40">Registrar Producto</a>
-                    <a th:href="@{/GestionRol}" id="btnRegRol" class="btn btn-success me-5 estilo-letra-mascota" type="submit"><img class="pe-1"
-                        src="../assets/categoriaProducto.png" alt="rol" height="40" width="40">Gestion Categoria</a>
-                    <a th:href="@{/exportarPDF}" id="pdfEmpleado" class="btn btn-danger"><img class="pe-1"
-                        src="../assets/pdf.png" alt="pdf" height="40" width="40">PDF</a>
-                </div> 
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Categoria</th>
-                            <th>Precio de venta</th>
-                            <th>Precio de compra</th>
-                            <th>Stock</th>
-                            <th>Moneda</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td colspan="2">Larry the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                  
-                </table>
+<main class="d-flex">
+  <div th:replace="layout/fragmentos :: barra"></div>
+  <div class="tablaempleados py-5">
+    <!--TABLA DONDE SE VERÁN LOS EMPLEADOS-->
+    <div class="card mt-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="width: 1200px;">
+      <div class="card-header texto-diseño fs-3">GESTION DE PRODUCTOS Y SERVICIOS</div>
+      <div class="card-body">
+        <div class="table-responsive col-12 text-center">
+          <form th:action="@{/productos}" th:object="${producto}" method="post">
+            <div class="row">
+              <div class="col-md-6">
+                <input th:field="*{id}" type="hidden" />
+                <div class="form-group">
+                  <label for="medio">Nombre:</label>
+                  <input th:field="*{nombre}" placeholder="Ingrese nombre del producto" class="form-control" type="text"/>
+                </div>
+                <div class="form-group">
+                  <label for="nombre">Precio de venta:</label>
+                  <input th:field="*{preciov}" placeholder="Ingrese precio de venta" class="form-control" type="text"/>
+                </div>
+                <div class="form-group">
+                  <label for="apellido">Stock:</label>
+                  <input th:field="*{stock}" placeholder="Ingrese apellido del cliente" class="form-control" type="text"/>
+                </div>
+                <div class="form-group">
+                  <label for="correo">Precio de compra:</label>
+                  <input th:field="*{precioc}" placeholder="Ingrese correo del cliente" class="form-control" type="text"/>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="telefono">Descripcion:</label>
+                  <input th:field="*{descripcion}" placeholder="Ingrese una breve descripcion del producto" class="form-control" type="text"/>
+                </div>
+                <div class="form-group">
+                  <label for="direccion">Categoria:</label>
+                  <select class="form-control" id="categoria" th:field="*{categoria.id}">
+                      <option value="">Seleccionar categoría</option>
+                      <option th:each="categoria: ${listaCategorias}" th:value="${categoria.id}" th:text="${categoria.descripcion}"></option>
+                  </select>
+              </div>
+              </div>
             </div>
+            <div class="col-12 text-center mb-2" style="margin-top: 10px;">
+              <button type="submit" class="btn btn-primary"> <img class="pe-1" th:src="@{/assets/images/newProducto.png}" alt="empleado" height="40" width="40">Registrar Producto </button>
+              <a th:href="@{/GestionCategoria}" id="btnRegRol" class="btn btn-success me-5 estilo-letra-mascota" type="submit" style="margin-left: 40px;"><img class="pe-1"
+                  th:src="@{/assets/images/categoriaProducto.png}" alt="rol" height="40" width="40">Gestion Categoria</a>
+                  <a th:href="@{/GestionServicio}" id="btnRegRol" class="btn btn-success me-5 estilo-letra-mascota" type="submit" style="margin-left: 4px;"><img class="pe-1"
+                    th:src="@{/assets/images/categoriaProducto.png}" alt="rol" height="40" width="40">Gestion Servicios</a>
+              <a th:href="@{/exportarPDF}" id="pdfEmpleado" class="btn btn-danger"><img class="pe-1"
+                  th:src="@{/assets/images/pdf.png}" alt="pdf" height="40" width="40">PDF</a>
+            </div>
+          </form>
+          <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Precio de venta</th>
+              <th>Precio de compra</th>
+              <th>Stock</th>
+              <th>Categoria</th>
+              <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr th:each="item: ${listaProductos}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.nombre}"></td>
+                <td th:text="${item.descripcion}"></td>
+                <td th:text="${item.preciov}"></td>
+                <td th:text="${item.precioc}"></td>
+                <td th:text="${item.stock}"></td>
+                <td th:text="${item.categoria.descripcion}"></td>
+                <td>
+                  <a th:href="@{/productos/editar/}+${item.id}" class="btn btn-warning">
+                    <i class="fa-solid fa-pen-to-square"></i> Editar
+                  </a>
+                </td>
+                <td class="text-center">
+                  <a th:href="@{/productos/eliminar/}+${item.id}" class="btn btn-danger" onclick="return confirm('¿Desea eliminar el producto?')">
+                    <i class="fa-solid fa-trash"></i> Eliminar
+                  </a>
+                </td>
+              </tr>
+            </tbody>            
+          </table>
         </div>
-        </div>
+      </div>
     </div>
-        
-    </div>
+  </div>
 </main>
- 
-  </main>
-  <footer th:replace="layout/fragmentos :: pie"></footer>
-
+<footer th:replace="layout/fragmentos :: pie"></footer>
 </body>
 </html>

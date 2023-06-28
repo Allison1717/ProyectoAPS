@@ -1,0 +1,8 @@
+package com.latamsol.latamsol.model.dao;
+import org.springframework.data.repository.CrudRepository;
+
+import com.latamsol.latamsol.model.entidad.Servicio;
+
+public interface IServicioDAO extends CrudRepository<Servicio, Long>{
+
+}

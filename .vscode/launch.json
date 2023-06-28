@@ -9,6 +9,16 @@
             "projectName": "latamsol",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-LatamsolApplication<integral>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.latamsol.latamsol.LatamsolApplication",
+            "projectName": "integral",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

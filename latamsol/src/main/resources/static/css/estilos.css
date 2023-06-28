@@ -96,3 +96,12 @@ footer{
     background-color: rgba(0, 0, 0, 0.1);
   }
   
+  .form-group {
+    margin-bottom: 10px;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.btn-container {
+  margin-right: 20px; /* Ajusta el valor según necesites */
+}
